@@ -1,0 +1,43 @@
+
+
+select * from Products
+
+
+--Example1 : Add a column to categorize each product into categories high, medium & low
+select 
+*,
+case
+	when Price > 500 then 'High' 
+	when Price<=500 and Price>=200 then 'Medium'
+	else 'Low'
+end as [High/Medium/Low]
+from products
+-----------------------------------------------Test
+select 
+*,
+case
+	when Price > 500 then 'High' 
+	when Price<=500 and Price>=200 then 'Medium'
+end as [High/Medium/Low]
+from products
+
+--Example2 : Provide priority to each category & sort the data according to that priority
+select * from Products
+order by 
+case 
+	when Category in ('Electronics') then 1
+	when Category in ('Furniture') then 2
+	else 3
+end
+
+-----------------------test
+
+select * from Products
+order by 
+case 
+	when Category in ('Electronics') then 1
+	when Category in ('Furniture') then 2
+	when Category = 'Accessories' then 3
+end
+
+
